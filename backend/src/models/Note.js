@@ -1,4 +1,4 @@
-import moongose, { mongo } from "mongoose";
+import mongoose, { mongo } from "mongoose";
 
 
 // 1- Create a schema
