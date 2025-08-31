@@ -17,9 +17,9 @@ app.use((req,res,next) => {
     console.log(`Req method is ${req.method} & Req url is ${req.url}`);
     next();
 })
-
-app.use(rateLimiter);
 app.use(cors());
+app.use(rateLimiter);
+
 app.use("/api/notes",notesRoutes);
 
 connectDB().then (() => {  //Connect to DB first then start the server
