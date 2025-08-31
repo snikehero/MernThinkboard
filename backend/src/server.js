@@ -1,7 +1,9 @@
 import express from "express";
+import cors from "cors";
+import dotenv from "dotenv"; //For environment Variables
+
 import notesRoutes from "./routes/notesRoutes.js";
 import {connectDB}  from "./config/db.js"; //To connect with the database
-import dotenv from "dotenv"; //For environment Variables
 import rateLimiter from "./middleware/rateLimiter.js";
 dotenv.config();
 
@@ -17,7 +19,7 @@ app.use((req,res,next) => {
 })
 
 app.use(rateLimiter);
-
+app.use(cors());
 app.use("/api/notes",notesRoutes);
 
 connectDB().then (() => {  //Connect to DB first then start the server
